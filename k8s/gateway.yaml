@@ -31,6 +31,16 @@ spec:
         host: cicd-demo-svc
         port:
           number: 8801
+  - match:
+    - uri:
+        exact: /v2
+    route:
+    - destination:
+        host: cicd-demo-svc
+        subset: v2
+        port:
+          number: 8801
+          
 # apiVersion: networking.istio.io/v1alpha3
 # kind: Gateway
 # metadata:

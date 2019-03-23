@@ -31,7 +31,7 @@ spec:
           host: cicd-demo-svc
           port:
             number: 8801
-          subset: v1 
+          subset: v2
   # - match:
   #   - headers:
   #       cookie:

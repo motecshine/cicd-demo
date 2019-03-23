@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: motecshine/cicd-demo-master:2285b62
+        image: motecshine/cicd-demo-master:932beff
         resources:
           requests:
             cpu: "100m"
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: motecshine/cicd-demo-master:2285b62
+        image: motecshine/cicd-demo-master:932beff
         resources:
           requests:
             cpu: "100m"
@@ -75,7 +75,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: motecshine/cicd-demo-master:2285b62
+        image: motecshine/cicd-demo-master:932beff
         resources:
           requests:
             cpu: "100m"

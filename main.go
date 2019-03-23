@@ -7,8 +7,6 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// todo 通过cookies 来判断 v1 还是v2
-		w.Write([]byte("v7"))
 		// read cookie
 		var cookie, err = r.Cookie("env")
 		if err == nil {
@@ -24,6 +22,8 @@ func main() {
 			default:
 				w.Write([]byte("cookievalue"))
 			}
+		} else {
+			w.Write([]byte(err.Error()))
 		}
 
 	})

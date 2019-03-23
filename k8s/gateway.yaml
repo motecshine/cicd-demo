@@ -31,9 +31,14 @@ spec:
     - destination:
         host: cicd-demo-v1
         subset: v1
+  - match:
+    - headers:
+        cookie:
+          regex: "^(.*?;)?(user=stage)(;.*)?$"
+    route:
     - destination:
         host: cicd-demo-v2
-        subset: v2
+        subset: v2     
   - match:
     - headers:
         cookie:

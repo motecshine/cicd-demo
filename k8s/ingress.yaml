@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cicd-demo-ingress
+  namespace: default
+  labels:
+    app: cicd-demo-ingress
+spec:
+  rules:
+  - host: cicd-demo.dev
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: cicd-demo-srv
+          servicePort: 8801

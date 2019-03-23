@@ -2,4 +2,4 @@
 
 ## 功能实现
 
-- [ x ] 区分`stage`, `prod`, `test`环境  
+- [x] 区分`stage`, `prod`, `test`环境  

@@ -21,6 +21,15 @@ node('go-jnlp') {
             sh "docker push motecshine/cicd-demo-${env.BRANCH_NAME}:${build_tag}"
         }
     }
+
+    stage('Migrate Kubernetes Yaml Config') {
+        sh "sed -i 's/<build_tag>/${build_tag}/' ./k8s/deployement.yaml"
+    }
+
+    stage('Commit To Github') {
+        sh "git add . && git commit -am \"build on latest commit id ${build_tag}\"'"
+    }
+
     // 在这里将会 批量sed k8s config yaml 来适配当前版本, 要么replace 要么 create
     stage('Notify K8S Deployagent') {     
     }

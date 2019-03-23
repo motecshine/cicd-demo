@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: motecshine/cicd-demo-master:0950ebc
+        image: motecshine/cicd-demo-master:<build_tag>
         resources:
           requests:
             cpu: "100m"
@@ -38,7 +38,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: cicd-demo
+  name: cicd-demo-v2
   labels:
     version: v2
 spec:
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: motecshine/cicd-demo-master:0950ebc
+        image: motecshine/cicd-demo-master:<build_tag>
         resources:
           requests:
             cpu: "100m"

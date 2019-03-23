@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: cicd-demo-ingress
-  namespace: default
+  namespace: istio-system # 这里用了broker 必须与istio命名空间一致
   labels:
     app: cicd-demo-ingress
 spec:

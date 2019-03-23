@@ -10,7 +10,7 @@ spec:
     request:
       headers:
         cookie:
-          regex: "^(.*?;)?(env=prod)(;.*)?$"
+          regex: "^(.*?;)?(env=stage)(;.*)?$"
   route:
   - labels:
       version: v2
@@ -29,6 +29,23 @@ spec:
       headers:
         cookie:
           regex: "^(.*?;)?(env=prod)(;.*)?$"
+  route:
+  - labels:
+      version: v2
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: cicd-demo-test
+spec:
+  destination:
+    name: cicd-demo-test
+  precedence: 2
+  match:
+    request:
+      headers:
+        cookie:
+          regex: "^(.*?;)?(env=test)(;.*)?$"
   route:
   - labels:
       version: v2

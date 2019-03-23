@@ -58,3 +58,27 @@ spec:
         imagePullPolicy: IfNotPresent #Always
         ports:
         - containerPort: 8801
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cicd-demo-test
+  labels:
+    version: test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cicd-demo
+        version: test
+    spec:
+      containers:
+      - name: cicd-demo
+        image: motecshine/cicd-demo-master:2285b62
+        resources:
+          requests:
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent #Always
+        ports:
+        - containerPort: 8801

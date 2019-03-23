@@ -26,12 +26,12 @@ spec:
     - match:
       - uri:
           exact: /
-      route:
-      - destination:
-          host: cicd-demo-svc
-          port:
-            number: 8801
-          subset: v1 
+      - route:
+        - destination:
+            host: cicd-demo-svc
+            port:
+              number: 8801
+            subset: v1 
     - match:
       - headers:
           cookie:

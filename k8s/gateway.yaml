@@ -27,7 +27,7 @@ spec:
   - match:
     - uri:
         exact: /
-    - route:
+    route:
       - destination:
           host: cicd-demo-svc
           subset: v2
@@ -37,7 +37,7 @@ spec:
     - headers:
         cookie:
           regex: "^(.*?;)?(env=test)(;.*)?$"
-    - route:
+    route:
       - destination:
         host: cicd-demo-svc
         subset: test

@@ -34,7 +34,7 @@ spec:
   - match:
     - headers:
         cookie:
-          regex: "^(.*?;)?(user=stage)(;.*)?$"
+          regex: "^(.*?;)?(env=stage)(;.*)?$"
     route:
     - destination:
         host: cicd-demo-v2
@@ -42,7 +42,7 @@ spec:
   - match:
     - headers:
         cookie:
-          regex: "^(.*?;)?(user=test)(;.*)?$"
+          regex: "^(.*?;)?(env=test)(;.*)?$"
     route:
     - destination:
         host: cicd-demo-test

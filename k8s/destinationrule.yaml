@@ -8,12 +8,12 @@ spec:
     tls:
       mode: ISTIO_MUTUAL
   subsets:
-    - name: cicd-demo-v1
+    - name: v1
       labels:
         version: v1
-    - name: cicd-demo-v2
+    - name: v2
       labels:
         version: v2
-    - name: cicd-demo-test
+    - name: test
       labels:
         version: test

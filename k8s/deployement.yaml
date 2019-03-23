@@ -74,7 +74,7 @@ spec:
         version: test
     spec:
       containers:
-      - name: cicd-demo
+      - name: cicd-demo-test
         image: motecshine/cicd-demo-master:169b878
         resources:
           requests:

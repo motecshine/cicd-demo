@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cicd-demo-svc
+  labels:
+    app: cicd-demo
+spec:
+  ports:
+  - port: 80
+    name: http
+  selector:
+    app: cicd-demo
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  cicd-demo-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cicd-demo
+        version: v1
+    spec:
+      containers:
+      - name: cicd-demo
+        image: motecshine/cicd-demo-master:0950ebc
+        resources:
+          requests:
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent #Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cicd-demo
+  labels:
+    version: v2
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cicd-demo
+        version: v2
+    spec:
+      containers:
+      - name: cicd-demo
+        image: motecshine/cicd-demo-master:0950ebc
+        resources:
+          requests:
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent #Always
+        ports:
+        - containerPort: 80

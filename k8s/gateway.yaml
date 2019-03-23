@@ -23,19 +23,22 @@ spec:
   gateways:
   - cicd-demo-gateway
   http:
-  - route:
-    - destination:
-        host: cicd-demo
-        subset: v1
-  - route:
-    - destination:
-        host: cicd-demo
-        subset: v2     
+  - match:
+    - uri:
+        exact: /
+    - route:
+      - destination:
+          host: cicd-demo
+          subset: v1
+    - route:
+      - destination:
+          host: cicd-demo
+          subset: v2     
   - match:
     - headers:
         cookie:
           regex: "^(.*?;)?(env=test)(;.*)?$"
     route:
     - destination:
-        host: cicd-demo
+        host: cicd-demo-svc
         subset: test

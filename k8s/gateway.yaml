@@ -29,15 +29,8 @@ spec:
     - route:
       - destination:
           host: cicd-demo
-          subset: v1
           port:
            number: 8801  
-    - route:
-      - destination:
-          host: cicd-demo
-          subset: v2
-          port:
-            number: 8801 
   - match:
     - headers:
         cookie:

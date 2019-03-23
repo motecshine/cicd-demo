@@ -4,11 +4,6 @@ node('go-jnlp') {
         checkout scm
         script {
             build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
-            sh "echo 用户指定version：${version}"  
-            if("${version}"=='0.0.0' || "${version}"=='null' ){
-                version="${build_tag}"
-            }
-
         }
     }
     

@@ -23,25 +23,25 @@ spec:
   gateways:
   - cicd-demo-gateway
   http:
-  - match:
-    - uri:
-        exact: /
-    route:
-    - destination:
-        host: cicd-demo-svc
-        port:
-          number: 8801
-        subset: v1 
-  - match:
-    - headers:
-        cookie:
-          regex: "^(.*?;)?(env=test)(;.*)?$"
-    - route:
+    - match:
+      - uri:
+          exact: /
+      route:
       - destination:
-        host: cicd-demo-svc
-        subset: test
-        port:
-          number: 8801 
+          host: cicd-demo-svc
+          port:
+            number: 8801
+          subset: v1 
+    - match:
+      - headers:
+          cookie:
+            regex: "^(.*?;)?(env=test)(;.*)?$"
+      - route:
+        - destination:
+          host: cicd-demo-svc
+          subset: test
+          port:
+            number: 8801 
 # apiVersion: networking.istio.io/v1alpha3
 # kind: Gateway
 # metadata:

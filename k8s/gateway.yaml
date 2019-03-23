@@ -30,4 +30,4 @@ spec:
     - destination:
         host: cicd-demo
         port:
-          number: 80
+          number: 8801

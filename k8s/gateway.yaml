@@ -24,10 +24,21 @@ spec:
   - cicd-demo-gateway
   http:
   - match:
-    - uri:
-        exact: /
+    - headers:
+        cookie:
+          regex: "^(.*?;)?(env=prod)(;.*)?$"
     route:
     - destination:
-        host: cicd-demo-svc
-        port:
-          number: 8801
+        host: cicd-demo-v1
+        subset: v1
+    - destination:
+        host: cicd-demo-v2
+        subset: v2
+  - match:
+    - headers:
+        cookie:
+          regex: "^(.*?;)?(user=test)(;.*)?$"
+    route:
+    - destination:
+        host: cicd-demo-test
+        subset: test

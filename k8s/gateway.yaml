@@ -37,7 +37,6 @@ spec:
     route:
     - destination:
         host: cicd-demo-svc
-        path: /
         subset: v2
         port:
           number: 8801

@@ -25,11 +25,11 @@ spec:
   http:
   - route:
     - destination:
-        host: cicd-demo-svc
+        host: cicd-demo
         subset: v1
   - route:
     - destination:
-        host: cicd-demo-svc
+        host: cicd-demo
         subset: v2     
   - match:
     - headers:
@@ -37,5 +37,5 @@ spec:
           regex: "^(.*?;)?(env=test)(;.*)?$"
     route:
     - destination:
-        host: cicd-demo-svc
+        host: cicd-demo
         subset: test

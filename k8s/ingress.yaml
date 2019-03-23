@@ -7,10 +7,10 @@ metadata:
     app: cicd-demo-ingress
 spec:
   rules:
-  - host: cicd-demo.dev
+  - host: cicd-demo.rustc.io
     http:
       paths:
       - path: /
         backend:
-          serviceName: cicd-demo-srv
-          servicePort: 8801
+          serviceName: istio-ingressgateway
+          servicePort: 80

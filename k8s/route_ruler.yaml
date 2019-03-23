@@ -1,0 +1,34 @@
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: cicd-demo-v2
+spec:
+  destination:
+    name: cicd-demo-v2
+  precedence: 2
+  match:
+    request:
+      headers:
+        cookie:
+          regex: "^(.*?;)?(env=prod)(;.*)?$"
+  route:
+  - labels:
+      version: v2
+
+---
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: cicd-demo-v1
+spec:
+  destination:
+    name: cicd-demo-v1
+  precedence: 2
+  match:
+    request:
+      headers:
+        cookie:
+          regex: "^(.*?;)?(env=prod)(;.*)?$"
+  route:
+  - labels:
+      version: v2

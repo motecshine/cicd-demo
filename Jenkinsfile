@@ -29,7 +29,7 @@ node('go-jnlp') {
     }
 
     stage('Commit To Github') {
-        sh "git add . && git commit -am \"build on latest commit id ${build_tag}\""
+        sh "git add . && git commit -am \"build on latest commit id ${build_tag}\" && git push origin master"
     }
 
     // 在这里将会 批量sed k8s config yaml 来适配当前版本, 要么replace 要么 create

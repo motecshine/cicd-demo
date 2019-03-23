@@ -28,6 +28,6 @@ spec:
         exact: /
     route:
     - destination:
-        host: cicd-demo
+        host: cicd-demo-svc
         port:
           number: 8801

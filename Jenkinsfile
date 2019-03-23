@@ -23,6 +23,8 @@ node('go-jnlp') {
     }
 
     stage('Migrate Kubernetes Yaml Config') {
+        sh "git config --global user.email 'shinemotec@gmail.com'"
+        sh "git config --global user.name '朱海峰'"
         sh "sed -i 's/<build_tag>/${build_tag}/' ./k8s/deployement.yaml"
     }
 

@@ -4,9 +4,9 @@ metadata:
   name: cicd-destinationrule
 spec:
   host: cicd-demo-svc
-  trafficPolicy:
-    tls:
-      mode: ISTIO_MUTUAL
+  # trafficPolicy: 关闭双向认证
+  #   tls:
+  #     mode: ISTIO_MUTUAL
   subsets:
     - name: v1
       labels:

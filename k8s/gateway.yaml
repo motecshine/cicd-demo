@@ -32,16 +32,16 @@ spec:
           port:
             number: 8801
           subset: v1 
-  - match:
-    - headers:
-        cookie:
-          regex: "^(.*?;)?(env=test)(;.*)?$"
-    route:
-      - destination:
-        host: cicd-demo-svc
-        subset: test
-        port:
-          number: 8801 
+  # - match:
+  #   - headers:
+  #       cookie:
+  #         regex: "^(.*?;)?(env=test)(;.*)?$"
+  #   route:
+  #     - destination:
+  #       host: cicd-demo-svc
+  #       subset: test
+  #       port:
+  #         number: 8801 
 # apiVersion: networking.istio.io/v1alpha3
 # kind: Gateway
 # metadata:

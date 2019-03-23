@@ -25,15 +25,18 @@ spec:
   http:
   - match:
     - uri:
-        exact: /
+        exact: /v1
     - route:
       - destination:
           host: cicd-demo
           subset: v1
-    - route:
-      - destination:
-          host: cicd-demo
-          subset: v2     
+    - match:
+      - uri:
+          exact: /v2     
+      - route:
+        - destination:
+            host: cicd-demo
+            subset: v2     
   - match:
     - headers:
         cookie:

@@ -1,9 +1,8 @@
-properties([parameters([string(defaultValue: '0.0.0', description: '服务版本号', name: 'serverversion')])])
-node('go111-npm') {
+
+node('go-jnlp') {
     stage('Git CLone') {
         checkout scm
         script {
-            version="${params.serverversion}"
             build_tag = sh(returnStdout: true, script: 'git rev-parse --short HEAD').trim()
             sh "echo 用户指定version：${version}"  
             if("${version}"=='0.0.0' || "${version}"=='null' ){
@@ -20,16 +19,14 @@ node('go111-npm') {
     stage('Build Docker Image') {
         sh "docker build -t motecshine/cicd-demo-${env.BRANCH_NAME}:${build_tag} ."
     }
-    
-    stage('Notify K8S Deployagent') {
-        TimeZone.getTimeZone('PRC')
-        def date = new Date(); 
-        deployed_time = date.getTime()
-        // 存储历史上线日志
-        def git_comments = sh(returnStdout: true, script: "git log -n 1 --pretty=format:\"%cd  %h  %s\" --date=short --since=\"last day\"")
-        def remove_blank_comments = java.net.URLEncoder.encode(git_comments, "UTF-8")
-        def git_commit_date = sh(returnStdout: true, script: "git log -n 1 --pretty=format:\"%cd\" --date=short --since=\"last day\"")
-        def url = ""
-        println(response)       
+
+    stage('Commit Docker Image') {
+        withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
+            sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
+            sh "docker push motecshine/default/cicd-demo-${env.BRANCH_NAME}:${build_tag}"
+        }
+    }
+    // 在这里将会 批量sed k8s config yaml 来适配当前版本, 要么replace 要么 create
+    stage('Notify K8S Deployagent') {     
     }
 }

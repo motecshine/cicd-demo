@@ -38,10 +38,10 @@ spec:
           regex: "^(.*?;)?(env=test)(;.*)?$"
     route:
       - destination:
-        host: cicd-demo-svc
-        subset: test
-        port:
-          number: 8801   
+          host: cicd-demo-svc
+          subset: test
+          port:
+            number: 8801   
   # - match:
   #   - headers:
   #       cookie:

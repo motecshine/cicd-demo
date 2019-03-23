@@ -18,7 +18,7 @@ node('go-jnlp') {
     stage('Commit Docker Image') {
         withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
             sh "docker login -u ${dockerHubUser} -p ${dockerHubPassword}"
-            sh "docker push motecshine/default/cicd-demo-${env.BRANCH_NAME}:${build_tag}"
+            sh "docker push motecshine/cicd-demo-${env.BRANCH_NAME}:${build_tag}"
         }
     }
     // 在这里将会 批量sed k8s config yaml 来适配当前版本, 要么replace 要么 create

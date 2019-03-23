@@ -33,7 +33,7 @@ spec:
             cpu: "100m"
         imagePullPolicy: IfNotPresent #Always
         ports:
-        - containerPort: 80
+        - containerPort: 8801
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -57,4 +57,4 @@ spec:
             cpu: "100m"
         imagePullPolicy: IfNotPresent #Always
         ports:
-        - containerPort: 80
+        - containerPort: 8801

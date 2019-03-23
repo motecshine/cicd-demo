@@ -23,6 +23,7 @@ spec:
   gateways:
   - cicd-demo-gateway
   http:
+  # 注意这里有顺序的
   - match:         
     - headers:
         cookie:

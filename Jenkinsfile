@@ -27,7 +27,7 @@ node('go-jnlp') {
     }
 
     stage('Deploy To K8S') {     
-       def name = sh "kubectl  get pod -l app=cicd-demo jsonpath='{.items[0].metadata.name}'"
-       print(name)
+        def ret = sh(script: 'kubectl  get pod -l app=cicd-demo', returnStdout: true)
+        println ret
     }
 }

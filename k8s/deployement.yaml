@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cicd-demo-svc
+  namespace: default
   labels:
     app: cicd-demo
 spec:
@@ -15,6 +16,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name:  cicd-demo-v1
+  namespace: default
   labels:
     version: v1
 spec:
@@ -39,6 +41,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: cicd-demo-v2
+  namespace: default
   labels:
     version: v2
 spec:
@@ -63,6 +66,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: cicd-demo-test
+  namespace: default
   labels:
     version: test
 spec:

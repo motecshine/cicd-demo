@@ -2,6 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: cicd-destinationrule
+  namespace: default
 spec:
   host: cicd-demo-svc
   # trafficPolicy: 关闭双向认证

@@ -37,7 +37,6 @@ node('go-jnlp') {
         } else {
             def exec_ret = sh(script: 'kubectl create -f k8s/', returnStdout: true)
             println exec_ret
-         
         }
    
         def exec_ret = sh(script: 'kubectl  get pods -l app=cicd-demo -n default', returnStdout: true)

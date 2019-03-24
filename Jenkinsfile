@@ -28,8 +28,9 @@ node('go-jnlp') {
 
     stage('Deploy To K8S') {     
         def ret = sh(script: 'kubectl  get pods -l app=cicd-demo -n default | wc -l ', returnStdout: true)
+        pods = Integer.parseInt(ret);
         // 这里没时间了先这样简单的实现
-        if (ret > "2") {
+        if (ret > 2) {
             def exec_ret = sh(script: 'kubectl replace -f k8s/ -n default', returnStdout: true)
             println exec_ret
         } else {

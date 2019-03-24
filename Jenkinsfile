@@ -29,7 +29,7 @@ node('go-jnlp') {
     stage('Deploy To K8S') {     
         def ret = sh(script: 'kubectl  get pods -l app=cicd-demo -n default | wc -l ', returnStdout: true)
         if ret > 2 {
-            sh "kubectl replace -f k8s/deployement.yaml"
+            sh "kubectl replace -f k8s/"
         } else {
             sh "kubectl create -f k8s/"
         }

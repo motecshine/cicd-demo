@@ -23,12 +23,11 @@ node('go-jnlp') {
     }
 
     stage('Migrate Kubernetes Yaml Config') {
-        sh "git config --global user.email 'shinemotec@gmail.com'"
-        sh "git config --global user.name '朱海峰'"
         sh "sed -i 's/<build_tag>/${build_tag}/' ./k8s/deployement.yaml"
     }
 
-    // 在这里将会 批量sed k8s config yaml 来适配当前版本, 要么replace 要么 create
-    stage('Notify K8S Deployagent') {     
+    stage('Deploy To K8S') {     
+       def name = sh "kubectl  get pod -l app=cicd-demo jsonpath='{.items[0].metadata.name}'"
+       print(name)
     }
 }

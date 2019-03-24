@@ -32,7 +32,7 @@ node('go-jnlp') {
         pods = Integer.parseInt(ret);
         // 这里没时间了先这样简单的实现
         if (pods > 2) {
-            def exec_ret = sh(script: 'kubectl replace -f k8s/ -n default', returnStdout: true)
+            def exec_ret = sh(script: 'kubectl replace -f k8s/deployment.yaml -n default', returnStdout: true)
             println exec_ret
         } else {
             def exec_ret = sh(script: 'kubectl create -f k8s/', returnStdout: true)

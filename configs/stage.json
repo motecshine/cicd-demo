@@ -1,0 +1,4 @@
+{
+	"db": "stage:123@protocol(2.2.2.2:3306)/test?charset=utf-8",
+    "runtime_env": "stage"
+}

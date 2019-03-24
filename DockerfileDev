@@ -1,0 +1,6 @@
+FROM golang
+WORKDIR /go/src/app
+COPY . .
+RUN ["go", "build", "-o", "cicd-demo", "."]
+ENV HOSTNAME dev
+CMD ["/go/src/app/cicd-demo"]

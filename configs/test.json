@@ -1,0 +1,4 @@
+{
+	"db": "test:123@protocol(8.8.8.8:3306)/dbname?charset=utf-8",
+    "runtime_env": "test"
+}

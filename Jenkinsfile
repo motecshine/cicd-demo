@@ -23,7 +23,7 @@ node('go-jnlp') {
     }
 
     stage('Migrate Kubernetes Yaml Config') {
-        sh "sed -i 's/<build_tag>/${build_tag}/' ./k8s/deployement.yaml"
+        sh "sed -i 's/<build_tag>/${build_tag}/' ./k8s/deployment.yaml"
     }
 
     stage('Deploy To K8S') {     

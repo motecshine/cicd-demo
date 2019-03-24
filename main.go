@@ -9,7 +9,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("\n \r"))
+		w.Write([]byte("hello world\n \r"))
 		hostname := os.Getenv("HOSTNAME")
 		w.Write([]byte("HOSTNAME:" + hostname + "\r \n"))
 		cookies, err := r.Cookie("env")

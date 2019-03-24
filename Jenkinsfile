@@ -30,10 +30,15 @@ node('go-jnlp') {
         def ret = sh(script: 'kubectl  get pods -l app=cicd-demo -n default | wc -l ', returnStdout: true)
         // 这里没时间了先这样简单的实现
         if (ret > 2) {
-            sh "kubectl replace -f k8s/"
+            def exec_ret = sh(script: 'kubectl replace -f k8s/ -n default', returnStdout: true)
+            println exec_ret
         } else {
-            sh "kubectl create -f k8s/"
+            def exec_ret = sh(script: 'kubectl create -f k8s/ -n default', returnStdout: true)
+            println exec_ret
+         
         }
-        sh "kubectl  get pods -l app=cicd-demo -n default"
+   
+        def exec_ret = sh(script: 'kubectl  get pods -l app=cicd-demo -n default', returnStdout: true)
+        println exec_ret
     }
 }
